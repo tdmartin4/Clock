@@ -10,5 +10,6 @@ import Foundation
 
 struct ArtistSummary: Codable {
     let uuid: String
+    let imageURL: URL
     let name: String
 }

@@ -10,22 +10,26 @@ import Foundation
 
 class MockVideoJSONGenerator {
     static func generateJSON() {
+        // Image URLs
+        let randomImageURL1 = URL(string: "https://s3.amazonaws.com/com.unanonymous.clock.test-data/giraffe_thumb.jpeg")!
+        let randomImageURL2 = URL(string: "https://s3.amazonaws.com/com.unanonymous.clock.test-data/calvin_hobbes_1.jpg")!
+        
         // Users
-        let nbaUser = UserSummary(uuid: "DE5F1605-4A71-4000-9C07-BBD5C84F0F8A", username: "nba")
-        let coldplay = ArtistSummary(uuid: "BEFB54F1-0BFF-411E-B018-D50926567FA0", name: "Coldplay")
+        let nbaUser = UserSummary(uuid: "DE5F1605-4A71-4000-9C07-BBD5C84F0F8A", imageURL: randomImageURL2, username: "nba")
 
         // Artists
-        let nbaArtist = ArtistSummary(uuid: "DE5F1605-4A71-4000-9C07-BBD5C84F0F8A", name: "nba")
-        let justroverz = ArtistSummary(uuid: "DCBF4C55-1788-4588-AC9E-A027F4B4D654", name: "justroverz")
+        let nbaArtist = ArtistSummary(uuid: "DE5F1605-4A71-4000-9C07-BBD5C84F0F8A", imageURL: randomImageURL2, name: "nba")
+        let justroverz = ArtistSummary(uuid: "DCBF4C55-1788-4588-AC9E-A027F4B4D654", imageURL: randomImageURL1, name: "justroverz")
+        let coldplay = ArtistSummary(uuid: "BEFB54F1-0BFF-411E-B018-D50926567FA0", imageURL: randomImageURL1, name: "Coldplay")
 
         // Songs
-        let song1 = SongSummary(uuid: "3C7D8573-7B30-45EB-A4A7-AEF579F0123B", artist: nbaArtist, name: "originalSound")
-        let song2 = SongSummary(uuid: "F3D148CA-5E07-43FF-8BE9-C48A3AC7BE76", artist: nbaArtist, name: "originalSound")
-        let song3 = SongSummary(uuid: "57CD9152-6B3A-48BE-9FC7-994B579312A9", artist: nbaArtist, name: "originalSound")
-        let song4 = SongSummary(uuid: "B223BE07-4666-430A-958F-D53FF1D18863", artist: nbaArtist, name: "originalSound")
-        let song5 = SongSummary(uuid: "65334313-D89F-4842-8143-220F7BD431AE", artist: nbaArtist, name: "originalSound")
-        let song6 = SongSummary(uuid: "8A8C1A60-E76E-462A-BA27-CE941503C8F9", artist: nbaArtist, name: "originalSound")
-        let song7 = SongSummary(uuid: "7099829-1B97-4999-BB52-7C231C0643F8", artist: nbaArtist, name: "originalSound")
+        let song1 = SongSummary(uuid: "3C7D8573-7B30-45EB-A4A7-AEF579F0123B", artist: nbaArtist, name: "original sound")
+        let song2 = SongSummary(uuid: "F3D148CA-5E07-43FF-8BE9-C48A3AC7BE76", artist: nbaArtist, name: "original sound")
+        let song3 = SongSummary(uuid: "57CD9152-6B3A-48BE-9FC7-994B579312A9", artist: nbaArtist, name: "original sound")
+        let song4 = SongSummary(uuid: "B223BE07-4666-430A-958F-D53FF1D18863", artist: nbaArtist, name: "original sound")
+        let song5 = SongSummary(uuid: "65334313-D89F-4842-8143-220F7BD431AE", artist: nbaArtist, name: "original sound")
+        let song6 = SongSummary(uuid: "8A8C1A60-E76E-462A-BA27-CE941503C8F9", artist: nbaArtist, name: "original sound")
+        let song7 = SongSummary(uuid: "7099829-1B97-4999-BB52-7C231C0643F8", artist: nbaArtist, name: "original sound")
         let xgamesMode = SongSummary(uuid: "F7EC8382-133E-46C0-981E-FF744898017E", artist: justroverz, name: "Just X Games Mode")
         let paradise = SongSummary(uuid: "879F3C15-71EE-4596-84D4-9B37F07D3395", artist: coldplay, name: "Paradise")
 
@@ -116,6 +120,4 @@ class MockVideoJSONGenerator {
         let jsonString = String(data: data, encoding: .utf8)!
         print(jsonString)
     }
-
-    
 }

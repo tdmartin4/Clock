@@ -9,36 +9,69 @@
 import UIKit
 
 class RootTabBarVC: UITabBarController {
+    private let placeholderVC = UIViewController()
+
     init() {
         super.init(nibName: nil, bundle: nil)
+        delegate = self
         
         // Configure UI
         tabBar.isTranslucent = false
-        tabBar.tintColor = .white
-        tabBar.barTintColor = .black
+        tabBar.barTintColor = .primary
+        tabBar.tintColor = .onPrimary
         
         // Setup View Controllers
         let homeVC = VideoListVC(dataProvider: MockVideoListDataProvider())
-        let homeImage = UIImage(systemName: "house.fill")
-        homeVC.tabBarItem = UITabBarItem(title: "Home", image: homeImage, tag: 0)
+        homeVC.tabBarItem = UITabBarItem(title: "Home", image: .home, tag: 0)
         
-        let discoverVC = DiscoverVC()
-        let discoverImage = UIImage(systemName: "magnifyingglass")
-        discoverVC.tabBarItem = UITabBarItem(title: "Discover", image: discoverImage, tag: 1)
+        let discoverVC = UIViewController()
+        discoverVC.tabBarItem = UITabBarItem(title: "Discover", image: .discover, tag: 1)
+                
+        let inboxVC = UIViewController()
+        inboxVC.tabBarItem = UITabBarItem(title: "Inbox", image: .inbox, tag: 2)
         
-        let inboxVC = InboxVC()
-        let inboxImage = UIImage(systemName: "tray.and.arrow.down.fill")
-        inboxVC.tabBarItem = UITabBarItem(title: "Inbox", image: inboxImage, tag: 2)
+        let profileVC = UIViewController()
+        profileVC.tabBarItem = UITabBarItem(title: "Me", image: .profile, tag: 3)
         
-        let profileVC = ProfileVC()
-        let profileImage = UIImage(systemName: "person.fill")
-        profileVC.tabBarItem = UITabBarItem(title: "Me", image: profileImage, tag: 3)
-        
-        viewControllers = [homeVC, discoverVC, inboxVC, profileVC]
+        viewControllers = [homeVC, discoverVC, placeholderVC, inboxVC, profileVC]
+        setupCaptureButton()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func setupCaptureButton() {
+        let captureVideoButton = UIButton()
+        captureVideoButton.backgroundColor = .onPrimary
+        captureVideoButton.layer.cornerRadius = 8
+        captureVideoButton.layer.masksToBounds = true
+        
+        view.addSubview(captureVideoButton)
+        let bottomPadding = UIApplication.shared.windows[0].safeAreaInsets.bottom
+        captureVideoButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalTo(tabBar).offset(-bottomPadding / 2)
+            make.width.equalToSuperview().multipliedBy(0.125)
+            make.height.equalTo(captureVideoButton.snp.width).multipliedBy(0.66)
+        }
+        
+        let addImageView = UIImageView(image: .plus)
+        addImageView.tintColor = .primary
+        captureVideoButton.addSubview(addImageView)
+        addImageView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.5)
+            make.width.equalTo(addImageView.snp.height)
+        }
+    }
 }
 
+extension RootTabBarVC: UITabBarControllerDelegate {
+    func tabBarController(
+        _ tabBarController: UITabBarController,
+        shouldSelect viewController: UIViewController
+    ) -> Bool {
+        return viewController != placeholderVC
+    }
+}

@@ -10,5 +10,6 @@ import Foundation
 
 struct UserSummary: Codable {
     let uuid: String
+    let imageURL: URL
     let username: String
 }

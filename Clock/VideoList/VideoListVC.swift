@@ -100,6 +100,7 @@ extension VideoListVC: UICollectionViewDelegateFlowLayout {
         }
         
         cell.playerController.queuePlayer.play()
+        cell.songLabel.restartLabel()
     }
 }
 
