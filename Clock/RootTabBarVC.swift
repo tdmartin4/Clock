@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class RootTabBarVC: UITabBarController {
     private let placeholderVC = UIViewController()
@@ -21,7 +22,7 @@ class RootTabBarVC: UITabBarController {
         tabBar.tintColor = .onPrimary
         
         // Setup View Controllers
-        let homeVC = VideoListVC(dataProvider: MockVideoListDataProvider())
+        let homeVC = UIViewController()
         homeVC.tabBarItem = UITabBarItem(title: "Home", image: .home, tag: 0)
         
         let discoverVC = UIViewController()

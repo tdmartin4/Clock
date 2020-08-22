@@ -33,22 +33,6 @@ extension UIImage {
         return systemImage(name: "person.fill")
     }
     
-    static var like: UIImage {
-        return systemImage(name: "heart.fill")
-    }
-    
-    static var comment: UIImage {
-        return systemImage(name: "message.fill")
-    }
-    
-    static var share: UIImage {
-        return systemImage(name: "arrowshape.turn.up.right.fill")
-    }
-    
-    static var musicNote: UIImage {
-        return systemImage(name: "music.note")
-    }
-    
     static var plus: UIImage {
         return systemImage(name: "plus")
     }

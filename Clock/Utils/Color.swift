@@ -13,20 +13,7 @@ extension UIColor {
         return .black
     }
     
-    static var background: UIColor {
-        return .white
-    }
-    
-    // Font and Icon Colors
     static var onPrimary: UIColor {
-        return .white
-    }
-    
-    static var onBackground: UIColor {
-        return .black
-    }
-    
-    static var onVideo: UIColor {
         return .white
     }
 }
